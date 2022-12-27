@@ -1,0 +1,23 @@
+{
+    "name": "vainqueurbihame/rest-api",
+    "description": "A simple rest api built with PHP and the symphony routing",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "./app/Utils/General.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Winner",
+            "email": "bihames4vainqueur@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/routing": "^5.4",
+        "symfony/http-foundation": "^5.4"
+    }
+}
