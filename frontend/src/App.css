@@ -13,14 +13,14 @@
 }
 
 .reports-block .block {
-    padding: 6px 15px;
     border-bottom: 1px solid #e8e8e8;
     position: relative;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: 15px;
+}
+.reports-block .block td {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 4px;
 }
 
 .reports-block .block span {
