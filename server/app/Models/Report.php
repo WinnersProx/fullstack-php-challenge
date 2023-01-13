@@ -32,7 +32,13 @@ class Report
     {
         $db = connect();
 
-        $query = $db->prepare("UPDATE reports SET state = :state WHERE id = UUID_TO_BIN(:id)");
+        $sourceIdentyId = self::findSourceIdentity($reportId);
+
+        $query = $db->prepare(
+            "UPDATE reports 
+                SET state = :state 
+            WHERE id = UUID_TO_BIN(:id) AND sourceIdentityId = :$sourceIdentyId"
+        );
 
         $query->execute([
             'id' => $reportId,
@@ -44,6 +50,7 @@ class Report
     {
         $db = connect();
 
+
         $query = $db->prepare("UPDATE reports SET state = :state WHERE id = UUID_TO_BIN(:id)");
 
         $query->execute([
@@ -51,5 +58,15 @@ class Report
             'state' => $state
         ]);
     }
-}
 
+    public function findSourceIdentity(string $reportId): string
+    {
+        $db = connect();
+
+        $query = $db->query("SELECT sourceIdentityId FROM reports WHERE id = $reportId");
+
+        $report = $query->fetch(\PDO::FETCH_ASSOC);
+
+        return $report->sourceIdentityId;
+    }
+}
